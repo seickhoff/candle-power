@@ -18,29 +18,9 @@ $head = <<<HEND
 <body bgcolor="#ffffff">
 HEND;
 
-/*
-$flash1 = <<<FSTART
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="995" height="395" id="CandlePower20-Day" align="middle">
-<param name="allowScriptAccess" value="sameDomain" />
-<param name="movie" value="CandlePower20-Day.swf" />
-<param name="quality" value="high" />
-<param name="bgcolor" value="#dddddd" />
-FSTART;
-*/
-
 $flash2 = <<<FEND
 <embed src="CandlePower20-Day.swf" quality="high" bgcolor="#dddddd" width="995" height="395" name="CandlePower20-Day" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" 
 FEND;
-
-/*
-$flash3 = <<<FSTART
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="995" height="395" id="CandlePower90-DayTall" align="middle">
-<param name="allowScriptAccess" value="sameDomain" />
-<param name="movie" value="CandlePower90-DayTall.swf" />
-<param name="quality" value="high" />
-<param name="bgcolor" value="#dddddd" />
-FSTART;
-*/
 
 $flash4 = <<<FEND
 <embed src="CandlePower90-DayTall.swf" quality="high" bgcolor="#dddddd" width="995" height="395" name="CandlePower90-DayTall" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" 
@@ -50,7 +30,6 @@ $foot = <<<FEND
 </body>
 </html>
 FEND;
-
 
 $timestamp = ($_REQUEST['date'] != "") ? strtotime($_REQUEST['date'] . " 12:00 AM") : strtotime("today 12:00 AM");
 $date = date("Ymd", $timestamp);
@@ -126,17 +105,13 @@ foreach ($syms as $symbol) {
 		}
 		
 		$values = substr($values, 0, -1);
-		
-		//echo "<td>\n" . $flash1;
-		//echo '<param name="FlashVars" value="' . $values, '" />' . "\n";
-		//echo $flash2 . 'flashvars="' . $values . "\" />\n</object>\n</td>\n";
+
 		echo "<td>\n" . $flash2 . 'flashvars="' . $values . "\" />\n</td>\n";
 		
 		if ($cnt == 1) {
 			echo "</tr>\n";
 			$cnt = 0;
 		}
-	
 
 		$cnt++;
 		if ($cnt == 1) {
@@ -168,9 +143,6 @@ foreach ($syms as $symbol) {
 		
 		$values = substr($values, 0, -1);
 		
-		//echo "<td>\n" . $flash3;
-		//echo '<param name="FlashVars" value="' . $values . '" />' . "\n";
-		//echo $flash4 . 'flashvars="' . $values . "\" />\n</object>\n</td>\n";
 		echo "<td>\n" . $flash4 . 'flashvars="' . $values . "\" />\n</td>\n";
 		
 		if ($cnt == 1) {
@@ -180,11 +152,8 @@ foreach ($syms as $symbol) {
 		
 	}
 }
+
 echo "</table>";
 echo	$foot;
-//close(OUT);
-
-//<param name="FlashVars" value="Open1=203.67&High1=206.75&Low1=200.10&Close1=202.48&Vol1=17248500&Open2=201.66&High2=202.81&Low2=196.45&Close2=197.37&Vol2=26985800&Open3=197.71&High3=198.02&Low3=191.10&Close3=192.40&Vol3=29162000&Open4=195.00&High4=196.81&Low4=192.14&Close4=196.35&Vol4=20366800&Open5=196.06&High5=196.80&Low5=188.17&Close5=188.50&Vol5=25576300" />
-
 
 ?>
